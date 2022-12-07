@@ -2,6 +2,9 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include <cstdlib>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
 class jogador{
@@ -51,6 +54,55 @@ class jogador{
     friend class jogadorAtaque;
 };
 
+int random(int y){
+    int x;
+    srand(y);
+    x = rand()%10+1;
+    return x;
+}
+
+float altura(){
+    float x;
+    float y;
+    srand(time(0));
+    x = rand()%2+1;
+    srand(time(0));
+    y = rand()%9+7;
+    y = y/10;
+    if(x == 2){
+        y = 0.1;
+    }
+    x = x+y;
+    return x;
+}
+
+string batizo(int x){
+    x = random(x);
+    if(x == 1){
+        return "Baptista";
+    }else if(x == 2){
+        return "Thiago";
+    }else if(x == 3){
+        return "Manuel Gomi";
+    }else if(x == 4){
+        return "Patrick Bateman";
+    }else if(x == 5){
+        return "Tyler Durdeen";
+    }else if(x == 6){
+        return "Vicente";
+    }else if(x == 7){
+        return "Colapso";
+    }else if(x == 8){
+        return "Alce Ione";
+    }else if(x == 9){
+        return "Foca Bilota";
+    }else if(x == 10){
+        return "Paulo Tapioca";
+    }
+}
+
+
+
 class jogadorGoleiro:virtual public jogador{
 
     private:
@@ -59,13 +111,19 @@ class jogadorGoleiro:virtual public jogador{
 
     public:
     jogadorGoleiro(){
-        Nome = "Cassio";
+        int y;
+        int x;
+
+        srand(time(0));
+        x = rand()%10000+1000;
+
+        Nome = batizo(x);
         Idade = 30;
-        Habilidade = 10;
+        Habilidade = random(x);
         Gols = 0;
-        Camisa = 5;
-        Reflexos = 9;
-        Altura = 1,80;
+        Camisa = random(x);
+        Reflexos = random(x);
+        Altura = altura();
     };
     jogadorGoleiro(string n, int i, int h, int g, int c, int r, float a){
         Nome = n;
@@ -102,13 +160,21 @@ class jogadorDefesa:virtual public jogador{
 
     public:
     jogadorDefesa(){
-        Nome = "Super 11";
-        Idade = 14;
-        Habilidade = 10;
+        int x;
+
+        srand(time(0));
+        x = rand()%100+1;
+        Nome = batizo(x);
+        Idade = 20;
+        x+=983;
+        Habilidade = random(x);
         Gols = 0;
-        Camisa = 5;
-        Cobertura = 10;
-        Desarme = 5;
+        x+=89;
+        Camisa = random(x);
+        x+=981;
+        Cobertura = random(x);
+        x+=891;
+        Desarme = random(x);
     };
     jogadorDefesa(string n, int i, int h, int g, int c, int r, int a){
         Nome = n;
@@ -146,15 +212,23 @@ class jogadorAtaque:virtual public jogador{
 
     public:
     jogadorAtaque(){
-        Nome = "Tsubasa";
+        int x;
+
+        srand(time(0));
+        x = rand()%100000000+100000;
+        Nome = batizo(x);
         Idade = 19;
-        Habilidade = 10;
+        x+=8913;
+        Habilidade = random(x);
         Gols = 0;
-        Camisa = 5;
-        Velocidade = 10;
-        Tecnica = 10;
+        x+=921;
+        Camisa = random(x);
+        x+=871;
+        Velocidade = random(x);
+        x+=1278;
+        Tecnica = random(x);
     };
-    jogadorAtaque(string n, int i, int h, int g, int c, int r, float a){
+    jogadorAtaque(string n, int i, int h, int g, int c, int r, int a){
         Nome = n;
         Idade = i;
         Habilidade = h;
