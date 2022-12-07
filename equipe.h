@@ -2,10 +2,11 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include <conio.h>
 #include "jogador.h"
 using namespace std;
 
-class time{
+class equipe{
 
     private:
     string Nome;
@@ -13,19 +14,19 @@ class time{
     int Vitorias;
     int Derrotas;
     int Empates;
-
-    public:
     jogadorAtaque atacantes[2];
     jogadorDefesa defensor[2];
     jogadorGoleiro goleiro;
-    time(){
-        Nome = "floresta";
+    
+    public:
+    equipe(){
+        Nome = "Floresta";
         Vitorias = 0;
         Derrotas = 0;
         Empates = 0;
     }
 
-    time(string n){
+    equipe(string n){
         Nome = n;
         Vitorias = 0;
         Derrotas = 0;
@@ -69,12 +70,29 @@ class time{
         Empates++;
     }
 
-    void printTime(){
-        cout << "Time : " << getNome() << endl << "================" << endl;
-        cout << "Goleiro : " << goleiro.getNome() << endl << "================" << endl;
-        cout << "Ala Esquerda : " << atacantes[0].getNome() << endl << "================" << endl;
-        cout << "Ala Direita : " << atacantes[1].getNome() << endl << "================" << endl;
-        cout << "Fixo : " << defensor[0].getNome() << endl << "================" << endl;
-        cout << "Pivo : " << defensor[1].getNome() << endl << "================" << endl;
+    void printequipe(){
+        cout << "Equipe : " << getNome() << endl << "================" << endl;
+        cout << "Goleiro : " << goleiro.getNome() << goleiro.getCamisa() << endl << "================" << endl;
+        cout << "Ala Esquerda : " << atacantes[0].getNome() << atacantes[0].getCamisa() << endl << "================" << endl;
+        cout << "Ala Direita : " << atacantes[1].getNome() << atacantes[1].getCamisa() << endl << "================" << endl;
+        cout << "Fixo : " << defensor[0].getNome() << defensor[0].getCamisa() << endl << "================" << endl;
+        cout << "Pivo : " << defensor[1].getNome() << defensor[1].getCamisa()<< endl << "================" << endl;
     }
+
+    void setGoleiro(jogadorGoleiro g){
+        goleiro = g;
+    }
+    void setEsquerda(jogadorAtaque a){
+        atacantes[0] = a;
+    }
+    void setDireita(jogadorAtaque b){
+        atacantes[1] = b;
+    }
+    void setFixo(jogadorDefesa a){
+        defensor[0] = a;
+    }
+    void setAla(jogadorDefesa b){
+        defensor[1] = b;
+    }
+    
 };
