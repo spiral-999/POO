@@ -2,48 +2,59 @@
 #include <string>
 #include <sstream>
 #include <vector>
-#include "time.h"
+#include "equipe.h"
 using namespace std;
 
 class partida{
     private:
-    string data;
+    
+    int dia;
+    int mes;
     int placarCasa;
     int placarVisitante;
-    time timeCasa;
-    time timeVisitante;
+    equipe equipeCasa;
+    equipe equipeVisitante;
 
     public:
 
 
     partida(){
-        data = "30/02";
+        dia = 15;
+        mes = 2;
         placarCasa = 0;
         placarVisitante = 0;
     }
 
-    partida(string d){
-        data = d;
+    partida(int d, int m){
+        dia = d;
+        mes = m;
         placarCasa = 0;
         placarVisitante = 0;
     }
 
-    partida(string d, string c, string v){
-        data = d;
-        timeCasa.setNome(c);
-        timeVisitante.setNome(v);
+    partida(int d, int m, string c, string v){
+        dia = d;
+        mes = m;
+        equipeCasa.setNome(c);
+        equipeVisitante.setNome(v);
 
         placarCasa = 0;
         placarVisitante = 0;
     }
 
 
-    void setData(string data) { 
-        this->data = data; 
+    void setDia(int x) { 
+        this->dia = x; 
         } 
-    string getData() { 
-        return this->data; 
+    int getDia() { 
+        return this->dia; 
         }
+    void setMes(int data) { 
+        this->mes = data; 
+        } 
+    int getMes() { 
+        return this->mes; 
+        }    
     void setPlacarCasa(int placarCasa) {
         this->placarCasa = placarCasa;
         } 
@@ -67,19 +78,19 @@ class partida{
         }
 
     void getPlacar(){
-        cout << timeCasa.getNome() << ": "<< getPlacarCasa() << " / " << timeVisitante.getNome() << ": "<< getPlacarVisitante() << endl;
+        cout << equipeCasa.getNome() << ": "<< getPlacarCasa() << " / " << equipeVisitante.getNome() << ": "<< getPlacarVisitante() << endl;
     }
 
 
-    void setTimecasa(time a){
-        timeCasa = a;
+    void setequipecasa(equipe a){
+        equipeCasa = a;
     }
 
-    void setTimevisitante(time b){
-        timeVisitante = b;
+    void setequipevisitante(equipe b){
+        equipeVisitante = b;
     }
     void printPartida(){
-        cout << "Time de Casa: " << timeCasa.getNome() << endl << "Time Visitante: " << timeVisitante.getNome() << endl;
+        cout << "equipe de Casa: " << equipeCasa.getNome() << endl << "equipe Visitante: " << equipeVisitante.getNome() << endl;
         getPlacar();
     }
 
